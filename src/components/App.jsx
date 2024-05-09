@@ -1,24 +1,16 @@
-import React from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import Privacy from "./Privacy";
-import TermsOfUse from "./TermsOfUse";
-import Tab from "./Tab";
-import TabConfig from "./TabConfig";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
 
-/**
- * The main app which handles the initialization and routing
- * of the app.
- */
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/termsofuse" element={<TermsOfUse />} />
-        <Route path="/tab" element={<Tab />} />
-        <Route path="/config" element={<TabConfig />} />
-      </Routes>
-    </Router>
-  );
+function App() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    (async function () {
+      const { text } = await( await fetch(`/api/message`)).json();
+      setData(text);
+    })();
+  });
+
+  return <div>{data}</div>;
 }
+
+export default App;

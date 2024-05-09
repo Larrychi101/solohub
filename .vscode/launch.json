@@ -1,7 +1,6 @@
 {
   "version": "0.2.0",
   "configurations": [
-    
     {
       "name": "Launch Chrome",
       "request": "launch",
@@ -9,7 +8,13 @@
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}"
     },
-
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
     {
       "name": "Attach to Chrome",
       "port": 9222,
@@ -60,12 +65,21 @@
         "hidden": true
       },
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Attach to Node Functions",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "preLaunchTask": "func: host start"
     }
   ],
   "compounds": [
     {
       "name": "Debug (Edge)",
-      "configurations": ["Attach to Frontend (Edge)"],
+      "configurations": [
+        "Attach to Frontend (Edge)"
+      ],
       "preLaunchTask": "Start Teams App Locally",
       "presentation": {
         "group": "all",
@@ -75,7 +89,9 @@
     },
     {
       "name": "Debug (Chrome)",
-      "configurations": ["Attach to Frontend (Chrome)"],
+      "configurations": [
+        "Attach to Frontend (Chrome)"
+      ],
       "preLaunchTask": "Start Teams App Locally",
       "presentation": {
         "group": "all",
